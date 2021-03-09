@@ -21,6 +21,14 @@ class HueResource {
     fun ip() = hueService.ip()
 
     @GET
+    @Path("/init")
+    fun init() = hueService.initApiConnection()
+
+    @GET
+    @Path("/list/devices")
+    fun list() = hueService.listDevices()
+
+    @GET
     @Path("/ping")
     @Produces(MediaType.TEXT_PLAIN)
     fun ping() = "pong"
