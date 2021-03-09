@@ -1,6 +1,8 @@
 package com.kiwi.to.the.moon.service
 
 import com.kiwi.to.the.moon.model.HueAttributes
+import com.kiwi.to.the.moon.model.Room
+import com.kiwi.to.the.moon.model.Rooms
 import io.github.zeroone3010.yahueapi.HueBridge
 import io.github.zeroone3010.yahueapi.discovery.HueBridgeDiscoveryService
 import org.eclipse.microprofile.config.inject.ConfigProperty
@@ -32,12 +34,12 @@ class HueService {
 
     fun initApiConnection(): String = Hue.hueBridgeConnectionBuilder(bridgeIp).initializeApiConnection(hueName).get()
 
-    fun listDevices() : String {
+    fun listRooms() : Rooms {
         val hue = Hue(bridgeIp, hueApiKey)
-        var rooms = ""
+        val rooms: MutableList<Room> = mutableListOf()
         hue.rooms.forEach {
-            it -> rooms += it.name + "\n"
+            it -> rooms.add(Room(it.name))
         }
-        return rooms
+        return Rooms(rooms)
     }
 }

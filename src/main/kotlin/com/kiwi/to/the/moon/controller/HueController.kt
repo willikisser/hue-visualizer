@@ -27,7 +27,7 @@ class HueController {
 
     @GET
     @Path("/list/devices")
-    fun list() = hueService.listDevices()
+    fun list() = hueService.listRooms()
 
     @GET
     @Path("/ping")
