@@ -1,5 +1,6 @@
-package com.kiwi.to.the.moon
+package com.kiwi.to.the.moon.service
 
+import com.kiwi.to.the.moon.model.HueAttributes
 import io.github.zeroone3010.yahueapi.HueBridge
 import io.github.zeroone3010.yahueapi.discovery.HueBridgeDiscoveryService
 import org.eclipse.microprofile.config.inject.ConfigProperty
@@ -27,7 +28,7 @@ class HueService {
         bridgeIp = bridges.firstOrNull()?.ip
     }
 
-    fun ip() = bridgeIp
+    fun ip() : HueAttributes = HueAttributes(bridgeIp)
 
     fun initApiConnection(): String = Hue.hueBridgeConnectionBuilder(bridgeIp).initializeApiConnection(hueName).get()
 
