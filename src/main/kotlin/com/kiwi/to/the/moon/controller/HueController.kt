@@ -2,14 +2,11 @@ package com.kiwi.to.the.moon.controller
 
 import com.kiwi.to.the.moon.service.HueService
 import javax.inject.Inject
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
-import javax.ws.rs.Consumes
 
 
-@Path("/hue")
+@Path("/v1/hue")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 class HueController {
@@ -26,8 +23,12 @@ class HueController {
     fun init() = hueService.initApiConnection()
 
     @GET
-    @Path("/list/devices")
+    @Path("/room/list")
     fun list() = hueService.listRooms()
+
+    @GET
+    @Path("/room/{name}")
+    fun getLightsByRoom(@PathParam("name") name: String) = hueService.getRoom(name)
 
     @GET
     @Path("/ping")
