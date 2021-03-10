@@ -6,12 +6,12 @@ import org.hamcrest.CoreMatchers.`is`
 import org.junit.jupiter.api.Test
 
 @QuarkusTest
-class HueResourceTest {
+class HueControllerTest {
 
     @Test
     fun testHelloEndpoint() {
         given()
-          .`when`().get("/hue/ping")
+          .`when`().get("/v1/hue/ping")
           .then()
              .statusCode(200)
              .body(`is`("pong"))
