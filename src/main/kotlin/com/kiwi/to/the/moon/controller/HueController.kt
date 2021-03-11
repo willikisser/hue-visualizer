@@ -44,5 +44,4 @@ class HueController {
     @Path("/ping")
     @Produces(MediaType.TEXT_PLAIN)
     fun ping() = "pong"
-
 }
