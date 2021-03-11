@@ -23,12 +23,16 @@ class HueController {
     fun init() = hueService.initApiConnection()
 
     @GET
-    @Path("/room/list")
+    @Path("/rooms")
     fun list() = hueService.listRooms()
 
     @GET
     @Path("/room/{name}")
     fun getLightsByRoom(@PathParam("name") name: String) = hueService.getRoom(name)
+
+    @GET
+    @Path("/events")
+    fun getEvents() = hueService.getEvents()
 
     @GET
     @Path("/ping")
