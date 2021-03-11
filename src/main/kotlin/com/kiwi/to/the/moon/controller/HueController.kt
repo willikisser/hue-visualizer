@@ -1,5 +1,6 @@
 package com.kiwi.to.the.moon.controller
 
+import com.kiwi.to.the.moon.model.TemperatureSensors
 import com.kiwi.to.the.moon.service.HueService
 import javax.inject.Inject
 import javax.ws.rs.*
@@ -23,7 +24,7 @@ class HueController {
     fun init() = hueService.initApiConnection()
 
     @GET
-    @Path("/rooms")
+    @Path("/room/list")
     fun list() = hueService.listRooms()
 
     @GET
@@ -31,8 +32,8 @@ class HueController {
     fun getLightsByRoom(@PathParam("name") name: String) = hueService.getRoom(name)
 
     @GET
-    @Path("/events")
-    fun getEvents() = hueService.getEvents()
+    @Path("/sensor/temperatur/list")
+    fun getEvents() = TemperatureSensors(hueService.getTemperatureSensors())
 
     @GET
     @Path("/ping")

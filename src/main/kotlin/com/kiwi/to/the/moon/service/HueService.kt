@@ -1,6 +1,6 @@
 package com.kiwi.to.the.moon.service
 
-import com.kiwi.to.the.moon.model.Event
+import com.kiwi.to.the.moon.model.TemperatureSensor
 import com.kiwi.to.the.moon.model.HueAttributes
 import com.kiwi.to.the.moon.model.Room
 import com.kiwi.to.the.moon.model.Rooms
@@ -57,11 +57,11 @@ class HueService {
         return lightList ?: listOf()
     }
 
-    fun getEvents() : List<Event>{
-        val events = mutableListOf<Event>()
-        hue?.switches?.forEach {
-            it -> events.add(Event(it.name))
+    fun getTemperatureSensors() : List<TemperatureSensor>{
+        val temperatureSensor = mutableListOf<TemperatureSensor>()
+        hue?.temperatureSensors?.forEach {
+            it -> temperatureSensor.add(TemperatureSensor(it.id, it.name, it.productName, it.degreesCelsius, it.type.name))
         }
-        return events
+        return temperatureSensor
     }
 }
