@@ -28,8 +28,13 @@ class HueController {
     fun list() = hueService.listRooms()
 
     @GET
-    @Path("/room/{name}")
-    fun getLightsByRoom(@PathParam("name") name: String) = hueService.getRoom(name)
+    @Path("/room/{name}/lights")
+    fun getLightsByRoom(@PathParam("name") name: String) = hueService.getLightsByRoom(name)
+
+    @GET
+    @Path("/room/{room_name}/light/{light_name}/toggle")
+    fun toggleLightByRoom(@PathParam("room_name") roomName: String,
+                          @PathParam("light_name") lightName: String) = hueService.toggleLightByRoomAndName(roomName, lightName)
 
     @GET
     @Path("/sensor/temperatur/list")

@@ -52,8 +52,8 @@ class HueService {
         return Rooms(rooms)
     }
 
-    fun getRoom(roomName: String) : List<Light> {
-        var lightList: List<Light>? = hue?.rooms?.filter { it.name == roomName }?.firstOrNull()?.lights?.toList()
+    fun getLightsByRoom(roomName: String) : List<Light> {
+        var lightList: List<Light>? = hue?.getRoomByName(roomName)?.get()?.lights?.toList()
         return lightList ?: listOf()
     }
 
@@ -63,5 +63,14 @@ class HueService {
             it -> temperatureSensor.add(TemperatureSensor(it.id, it.name, it.productName, it.degreesCelsius, it.type.name))
         }
         return temperatureSensor
+    }
+
+    fun toggleLightByRoomAndName(roomName: String, lightName: String) {
+        var light = hue?.getRoomByName(roomName)?.get()?.getLightByName(lightName)?.get()
+        if (light?.isOn == true) {
+            light.turnOff()
+        } else {
+            light?.turnOn()
+        }
     }
 }
