@@ -1,6 +1,6 @@
 # hue-visualizer
 An application to visualize the Philips Hue activity for retards, which goes to the moon 🚀
-It's maybe more a Philips Hue usage visualization.
+It's maybe more a Philips Hue usage visualization and at the beginning a playground.
 
 ## Project motivation
 I control all my smart home devices with my pretty awesome white-blue Philips Hue via Alexa and enjoy all advantages. But everything i'm able to control or see is the actual snapshot about which device is turned on or off. This Project, how ever it will be implemented and whatever it contains, collects all data to visualize the usage over any period of time. It may could help to improve to reduce the energy consumption by turning off and on the plugs automatically.
