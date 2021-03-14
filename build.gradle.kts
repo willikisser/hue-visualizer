@@ -2,6 +2,8 @@ plugins {
     kotlin("jvm") version "1.4.20"
     kotlin("plugin.allopen") version "1.4.20"
     id("io.quarkus")
+    jacoco
+    id("org.sonarqube")
 }
 
 repositories {
@@ -28,6 +30,18 @@ dependencies {
 
 group = "com.kiwi.to.the.moon"
 version = "1.0.0-SNAPSHOT"
+
+jacoco {
+    toolVersion = "0.8.6"
+}
+
+tasks.jacocoTestReport {
+    reports {
+        html.isEnabled = true
+        xml.isEnabled = false
+        csv.isEnabled = false
+    }
+}
 
 java {
     sourceCompatibility = JavaVersion.VERSION_11
